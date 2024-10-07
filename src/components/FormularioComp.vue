@@ -1,4 +1,14 @@
 <script setup>
+import { ref, reactive } from 'vue';
+
+// const nombre = ref('')
+const paciente = reactive({
+    nombre: '',
+    propietario: '',
+    email: '',
+    alta: '',
+    sintomas: ''
+})
 
 </script>
 
@@ -15,27 +25,27 @@
             <!-- Input Mascota -->
             <div class="mb-5">
                 <label for="mascota" class="block text-gray-700 uppercase font-bold">Nombre Mascota</label>
-                <input type="text" id="mascota" placeholder="Nombre de la mascota" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+                <input type="text" id="mascota" placeholder="Nombre de la mascota" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" v-model="paciente.nombre">
             </div>
             <!-- Input Propietario -->
             <div class="mb-5">
                 <label for="propietario" class="block text-gray-700 uppercase font-bold">Nombre Propietario</label>
-                <input type="text" id="propietario" placeholder="Nombre del Propietario" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+                <input type="text" id="propietario" placeholder="Nombre del Propietario" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" v-model="paciente.propietario">
             </div>
             <!-- Email Propietario -->
              <div class="mb-5">
                 <label for="email" class="block text-gray-700 uppercase font-bold">Correo Propietario</label>
-                <input type="email" id="email" placeholder="Correo del Propietario" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+                <input type="email" id="email" placeholder="Correo del Propietario" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" v-model="paciente.email">
              </div>
              <!-- Alta -->
              <div class="mb-5">
                 <label for="alta" class="block text-gray-700 uppercase font-bold">Alta Mascota</label>
-                <input type="date" id="alta" class="border-2 w-full p-2 mt-2 rounded-md text-gray-400">
+                <input type="date" id="alta" class="border-2 w-full p-2 mt-2 rounded-md text-gray-400" v-model="paciente.alta">
              </div>
              <!-- Sintomas -->
               <div class="mb-5">
                 <label for="sintomas" class="block text-gray-700 uppercase font-bold">Síntomas</label>
-                <textarea id="sintomas" placeholder="Describe los síntomas" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"></textarea>
+                <textarea id="sintomas" placeholder="Describe los síntomas" class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40" v-model="paciente.sintomas"></textarea>
               </div>
               <!-- Boton -->
                <input type="submit" id="" value="registrar paciente" class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors">
