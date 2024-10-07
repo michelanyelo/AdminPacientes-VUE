@@ -1,10 +1,11 @@
 <script setup>
+import HeaderComp from './components/HeaderComp.vue';
 </script>
 
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <div class="container mx-auto mt-20">
+    <HeaderComp />
+  </div>
 </template>
 
 <style scoped></style>
