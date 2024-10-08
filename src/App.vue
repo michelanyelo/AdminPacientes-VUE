@@ -1,6 +1,7 @@
 <script setup>
 import HeaderComp from './components/HeaderComp.vue';
 import FormularioComp from './components/FormularioComp.vue'
+import PacienteComp from './components/PacienteComp.vue';
 import { ref, reactive } from 'vue';
 
 const pacientes = ref([])
@@ -13,8 +14,17 @@ const paciente = reactive({
   sintomas: ''
 })
 
-const guardarPaciente = () =>{
-    pacientes.value.push(paciente)
+const guardarPaciente = () => {
+  pacientes.value.push({
+    ...paciente
+  })
+
+  // Limpiar inputs
+  paciente.nombre = ''
+  paciente.propietario = ''
+  paciente.email = ''
+  paciente.alta = ''
+  paciente.sintomas = ''
 }
 </script>
 
@@ -23,11 +33,16 @@ const guardarPaciente = () =>{
     <HeaderComp />
     <div class="mt-12 md:flex">
       <FormularioComp v-model:nombre="paciente.nombre" v-model:propietario="paciente.propietario"
-        v-model:email="paciente.email" v-model:alta="paciente.alta" v-model:sintomas="paciente.sintomas" @guardar-paciente="guardarPaciente"/>
+        v-model:email="paciente.email" v-model:alta="paciente.alta" v-model:sintomas="paciente.sintomas"
+        @guardar-paciente="guardarPaciente" />
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
         <h3 class="font-black text-3xl text-center">Administra Tus Pacientes</h3>
         <div v-if="pacientes.length > 0">
-
+          <p class="text-lg mt-5 text-center mb-10">
+            Información de
+            <span class="text-indigo-600 font-bold">Pacientes</span>
+          </p>
+          <PacienteComp v-for="paciente in pacientes" :key="paciente.id" :paciente="paciente" />
         </div>
         <p v-else class="mt-10 text-2xl text-center">No Hay Pacientes</p>
       </div>

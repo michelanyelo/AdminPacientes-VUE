@@ -52,35 +52,30 @@ const validar = () => {
             <div class="mb-5">
                 <label for="mascota" class="block text-gray-700 uppercase font-bold">Nombre Mascota</label>
                 <input type="text" id="mascota" placeholder="Nombre de la mascota"
-                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    :value="props.nombre" 
+                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" :value="props.nombre"
                     @input="emit('update:nombre', $event.target.value)">
             </div>
             <div class="mb-5">
                 <label for="propietario" class="block text-gray-700 uppercase font-bold">Nombre Propietario</label>
                 <input type="text" id="propietario" placeholder="Nombre del Propietario"
-                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    :value="props.propietario" 
+                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" :value="props.propietario"
                     @input="emit('update:propietario', $event.target.value)">
             </div>
             <div class="mb-5">
                 <label for="email" class="block text-gray-700 uppercase font-bold">Correo Propietario</label>
                 <input type="email" id="email" placeholder="Correo del Propietario"
-                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" 
-                    :value="props.email" 
+                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md" :value="props.email"
                     @input="emit('update:email', $event.target.value)">
             </div>
             <div class="mb-5">
                 <label for="alta" class="block text-gray-700 uppercase font-bold">Alta Mascota</label>
                 <input type="date" id="alta" class="border-2 w-full p-2 mt-2 rounded-md text-gray-400"
-                    :value="props.alta" 
-                    @input="emit('update:alta', $event.target.value)">
+                    :value="props.alta" @input="emit('update:alta', $event.target.value)">
             </div>
             <div class="mb-5">
                 <label for="sintomas" class="block text-gray-700 uppercase font-bold">Síntomas</label>
                 <textarea id="sintomas" placeholder="Describe los síntomas"
-                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
-                    :value="props.sintomas" 
+                    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40" :value="props.sintomas"
                     @input="emit('update:sintomas', $event.target.value)"></textarea>
             </div>
             <input type="submit" value="Registrar Paciente"
