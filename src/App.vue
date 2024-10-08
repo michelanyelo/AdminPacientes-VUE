@@ -1,12 +1,15 @@
 <script setup>
+import { ref, reactive } from 'vue';
+import { uid } from 'uid';
 import HeaderComp from './components/HeaderComp.vue';
 import FormularioComp from './components/FormularioComp.vue'
 import PacienteComp from './components/PacienteComp.vue';
-import { ref, reactive } from 'vue';
+
 
 const pacientes = ref([])
 
 const paciente = reactive({
+  id: null,
   nombre: '',
   propietario: '',
   email: '',
@@ -16,15 +19,18 @@ const paciente = reactive({
 
 const guardarPaciente = () => {
   pacientes.value.push({
-    ...paciente
+    ...paciente,
+    id: uid()
   })
 
   // Limpiar inputs
-  paciente.nombre = ''
-  paciente.propietario = ''
-  paciente.email = ''
-  paciente.alta = ''
-  paciente.sintomas = ''
+  Object.assign(paciente, {
+    nombre: '',
+    propietario: '',
+    email: '',
+    alta: '',
+    sintomas: ''
+  })
 }
 </script>
 
