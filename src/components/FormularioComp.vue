@@ -20,7 +20,8 @@ const emit = defineEmits([
     "update:propietario",
     "update:email",
     "update:alta",
-    "update:sintomas"
+    "update:sintomas",
+    "guardar-paciente"
 ]);
 
 const validar = () => {
@@ -29,7 +30,11 @@ const validar = () => {
         alerta.mensaje = 'Todos los campos son obligatorios'
         return
     }
+
+    emit('guardar-paciente')
 }
+
+
 </script>
 
 <template>
