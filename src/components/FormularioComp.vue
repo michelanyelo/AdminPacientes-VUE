@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, defineProps, defineEmits } from 'vue';
+import { reactive, defineProps, defineEmits, computed } from 'vue';
 import AlertaComp from './AlertaComp.vue';
 
 const alerta = reactive({
@@ -8,6 +8,7 @@ const alerta = reactive({
 })
 
 const props = defineProps({
+    id: {type: [String, null], required: true},
     nombre: { type: String, required: true },
     propietario: { type: String, required: true },
     email: { type: String, required: true },
@@ -44,6 +45,9 @@ const validar = () => {
     }, 3000)
 }
 
+const editando = computed(()=>{
+    return props.id
+})
 
 </script>
 
@@ -88,7 +92,7 @@ const validar = () => {
                     class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40" :value="props.sintomas"
                     @input="emit('update:sintomas', $event.target.value)"></textarea>
             </div>
-            <input type="submit" value="Registrar Paciente"
+            <input type="submit" :value="[editando ? 'Guardar Cambios' : 'Registrar Paciente']"
                 class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors">
         </form>
     </div>
