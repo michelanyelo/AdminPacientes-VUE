@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import { uid } from 'uid';
 import HeaderComp from './components/HeaderComp.vue';
 import FormularioComp from './components/FormularioComp.vue'
@@ -48,6 +48,22 @@ const actualizarPaciente = (id) => {
 const eliminarPaciente = (id) => {
   pacientes.value = pacientes.value.filter(paciente => paciente.id !== id)
 }
+
+// Persistencia
+const guardarLocalStorage = () => {
+  localStorage.setItem("pacientes", JSON.stringify(pacientes.value))
+}
+
+watch(pacientes, () => {
+  guardarLocalStorage()
+}, { deep: true })
+
+onMounted(() => {
+  const pacientesStorage = localStorage.getItem("pacientes")
+  if (pacientesStorage) {
+    pacientes.value = JSON.parse(pacientesStorage)
+  }
+})
 </script>
 
 <template>
